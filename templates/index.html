@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mango Import Conditions - Australia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <i class="fas fa-mango"></i>
+        </div>
+        <h1>Australian Mango Import Conditions</h1>
+    </div>
+    <div class="container">
+        <div class="search-container">
+            <i class="fas fa-globe"></i>
+            <select id="country">
+                {% for country in countries %}
+                <option value="{{ country }}">{{ country }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div id="conditions-display" class="conditions-card">
+            <!-- Conditions will be displayed here -->
+        </div>
+
+        <div class="bicon-link">
+            <p>For complete information, visit:</p>
+            <a id="bicon-url" href="#" target="_blank" class="bicon-button">
+                <i class="fas fa-external-link-alt"></i> View on BICON
+            </a>
+        </div>
+    </div>
+    <script>
+        const importConditions = {{ countries|tojson|safe }};
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
